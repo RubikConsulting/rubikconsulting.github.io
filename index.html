@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Rubik</title>
+    <link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">
+    <style>
+        html {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            font-family: 'Rubik', sans-serif;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #417eee;
+            color: #FFF;
+            font-size: 1em;
+            margin:0;
+            padding:0;
+        }
+
+        h2 {
+            font-size: 2em;
+            font-weight: normal;
+            text-align: center;
+        }
+
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+
+
+        path {
+            stroke: #FFF;
+            stroke-width: 19;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            fill: none;
+        }
+    </style>
+</head>
+<body>
+    <h2>Rubik Consulting</h2>
+    <svg width="100%">
+        <path d="M28 141l0 -82 36 -21 36 21m36 62l36 -21 0 -41 -72 -42m-36 104l0 41 36 21 72 -42" />
+    </svg>
+    <script>
+
+        function resize() {
+            var body = document.getElementsByTagName("body")[0];
+            var title = document.getElementsByTagName("h2")[0];
+            var svg = document.getElementsByTagName("svg")[0];
+            var height = body.clientHeight - title.clientHeight;
+            var width = body.clientWidth;
+            var path = document.getElementsByTagName("path")[0];
+            svg.setAttribute("height", height + "px");
+            var rect = path.getBoundingClientRect();
+            var x = (width - rect.width) / 2;
+            var y = ((height - rect.height) / 2) - title.clientHeight;
+            path.setAttribute("transform", "translate(" + x + "," + y + ")");
+        }
+
+        window.onresize = function () {
+            resize();
+        }
+
+        resize();
+    </script>
+</body>
+</html>
